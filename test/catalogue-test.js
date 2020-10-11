@@ -58,5 +58,24 @@ describe("Catalogue", () => {
           expect(result.productIds).to.be.empty;
          });
       });
+      describe("batchAddProducts", () => {
+        beforeEach(function () {
+          batch = {
+            type: 'Batch',
+            products: [
+              new Product("A126", "Product 6", 100, 10, 10.0),
+              new Product("A127", "Product 7", 100, 10, 10.0),
+            ],
+          };
+        });
+        it("should add products for a normal request and return the correct no. added", () => {
+          const result = cat.batchAddProducts(batch);
+          expect(result).to.equal(2);
+          let addedProduct = cat.findProductById("A126");
+          expect(addedProduct).to.not.be.undefined;
+          addedProduct = cat.findProductById("A127");
+          expect(addedProduct).to.not.be.undefined;
+        });
+    });
   });
 });
