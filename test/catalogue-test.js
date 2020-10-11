@@ -36,4 +36,4 @@ describe("Catalogue", () => {
       expect(result).to.be.undefined;
     });
   });
-});console.log('before block')
+});
