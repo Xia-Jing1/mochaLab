@@ -111,7 +111,11 @@ describe("Catalogue", () => {
             });
 
 
-            
+            it("should throw an exception if the condition object does not have a keyword", function () {
+              
+              expect(() => cat.searchProduct({ keyword: "Widget" })).to.throw("Bad search");
+         
+            });
             
           });
 

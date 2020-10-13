@@ -54,14 +54,26 @@ class Catalogue {
 
   searchProduct(pro){
     const result = { type: "search", productIds: [] };
+    if(pro.price){
+      result.productIds = this.products
+        .filter((p) => p.price <= pro.price)
+        .map((p) => p.id);
+      return result;
+      }
 
+if(pro.keyword){
       result.productIds = this.products
       .filter((p) => p.name.search(pro.keyword) >= 0)
       .map((p) => p.id);
+    
+if(result.productIds.length===0){
+      throw new Error("Bad search");
+    }}
+  
     return result;
+   
 
-
-    }
+}
 
   }
 
