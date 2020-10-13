@@ -54,16 +54,16 @@ class Catalogue {
 
   searchProduct(pro){
     const result = { type: "search", productIds: [] };
-    result.productIds = this.products
-      .filter((p) => p.price <= pro.price)
+
+      result.productIds = this.products
+      .filter((p) => p.name.search(pro.keyword) >= 0)
       .map((p) => p.id);
     return result;
 
 
+    }
 
-    
   }
 
-}
 
 module.exports = Catalogue;

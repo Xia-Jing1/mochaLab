@@ -92,7 +92,7 @@ describe("Catalogue", () => {
           });
 
 
-          
+
           describe("searchProduct", function () {
             it("should find products'price cheaper than €25.01", function () {
               cat.addProduct(new Product("A129", "Product10", 100, 10, 25.0));
@@ -102,6 +102,15 @@ describe("Catalogue", () => {
             });
 
             
+            it("should return products with 'sho' in the name", function () {
+              cat.addProduct(new Product("A130", "shoes", 100, 10, 10.0));
+              cat.addProduct(new Product("A131", "shoulder bag", 100, 10, 10.0));
+              const result = cat.searchProduct({keyword: 'sho'});
+              expect(result.productIds).to.have.lengthOf(2);
+              expect(result.productIds).to.have.members(["A130","A131"]);
+            });
+
+
             
             
           });
